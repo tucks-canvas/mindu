@@ -155,7 +155,7 @@ const Home = () => {
               </View>
 
               <View style={styles.body}>
-                <Text style={styles.bodytext}>{screenText}, </Text>  
+                <Text style={styles.bodytext}>{screenText}, {fname || 'Marvin'}</Text>  
                 <Text style={styles.bodysub}>{currentDate}</Text>  
               </View> 
 
@@ -179,7 +179,8 @@ const Home = () => {
                 </View>
               </View>
 
-              <View style={styles.tasks}>
+            {/*              
+             <View style={styles.tasks}>
                 <Text style={styles.tasktext}>What do you need today?</Text>
 
                 <View style={styles.tasklist}>
@@ -207,7 +208,8 @@ const Home = () => {
                     ))}
                   </ScrollView>      
                 </View>     
-              </View>
+             </View>  
+            */}
             </View>           
           </View>
         </ScrollView>

@@ -16,6 +16,14 @@ import phone from "../assets/icons/phone.png";
 import at from "../assets/icons/at.png";
 import mail from "../assets/icons/mail.png";
 import arrow from "../assets/icons/arrow.png";
+import rarrow from "../assets/icons/rarrow.png";
+import larrow from "../assets/icons/larrow.png";
+import darrow from "../assets/icons/darrow.png";
+import uarrow from "../assets/icons/uarrow.png";
+import rswitch from "../assets/icons/rswitch.png";
+import lswitch from "../assets/icons/lswitch.png";
+import star from "../assets/icons/star.png";
+import starfill from "../assets/icons/starfill.png";
 
 export default { 
     home,
@@ -36,4 +44,12 @@ export default {
     at,
     phone,
     arrow,
+    rarrow,
+    larrow,
+    uarrow,
+    darrow,
+    rswitch,
+    lswitch,
+    star,
+    starfill,
 };

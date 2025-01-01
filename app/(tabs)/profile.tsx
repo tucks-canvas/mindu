@@ -70,32 +70,32 @@ const pages = [
   {
     id: 7,
     header: 2,
-    title: 'Resources',
-    link: '/resources',
+    title: 'FAQs',
+    link: '/faqs',
   },
   {
     id: 8,
+    header: 2,
+    title: 'Self-Help Control',
+    link: '/selfhelp',
+  },
+  {
+    id: 9,
+    header: 2,
+    title: 'User Support',
+    link: '/support',
+  },
+  {
+    id: 10,
     header: 2,
     title: 'Billing Information',
     link: '/billing',
   },
   {
-    id: 9,
+    id: 11,
     header: 2,
     title: 'Subscription',
     link: '/subscription',
-  },
-  {
-    id: 10,
-    header: 2,
-    title: 'FAQs',
-    link: '/faqs',
-  },
-  {
-    id: 11,
-    header: 2,
-    title: 'User Support',
-    link: '/support',
   },
 ];
 
@@ -173,10 +173,8 @@ const Profile = () => {
 
                 <View style={styles.pages}>
                   {headers.map((header) => (
-                    <ScrollView 
-                      showsVerticalScrollIndicator={false}
+                    <View 
                       key={header.id}
-                      contentContainerStyle={styles.scrollView2}
                     >
                       <Text style={styles.pagetext}>{header.title}</Text>
 
@@ -199,7 +197,7 @@ const Profile = () => {
                             <View style={styles.line} />
                           </TouchableOpacity>
                         ))}
-                    </ScrollView>
+                    </View>
                   ))}
                 </View>
               </View>
@@ -246,6 +244,12 @@ const styles = StyleSheet.create({
     top: 0,
   },
 
+  /* Scroll View */
+
+  scrollView1: {
+    paddingBottom: 150,
+  },
+
   /* Header */
 
   header: {
@@ -267,15 +271,15 @@ const styles = StyleSheet.create({
 
   headertext: {
     color: colors.azure,
-    fontSize: 20,
-    fontFamily: 'Poppins-SemiBold',
+    fontSize: 18,
+    fontFamily: 'Montserrat-Bold',
     marginTop: 30,
   },
 
   headersub: {
     color: colors.grey,
-    fontSize: 12,
-    fontFamily: 'Poppins-Regular',
+    fontSize: 10,
+    fontFamily: 'Montserrat-Regular',
     marginTop: 10,
   },
 
@@ -315,14 +319,14 @@ const styles = StyleSheet.create({
   pagetext: {
     color: 'rgba(0, 0, 0, 0.3)',
     fontSize: 15,
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Montserrat-Bold',
     paddingTop: 20,
   },
 
   pagesub: {
     color: 'rgba(0, 0, 0, 0.3)',
     fontSize: 10,
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Montserrat-Medium',
   },
 
   line: {

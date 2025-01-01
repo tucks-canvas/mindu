@@ -136,7 +136,7 @@ const Home = () => {
               >
                 <Path
                   fill={colors.azure}
-                  d="M 0 0 L 148.32 0 C 296.64 0 593.28 0 889.92 0 S 1483.2 0 1631.52 0 L 1925 1 L 1927 313 C 1096 805 889.92 234 1.236 202.8 Z"
+                  d="M 0 0 L 148.32 0 C 296.64 0 593.28 0 889.92 0 S 1483.2 0 1631.52 0 L 1925 1 L 1927 313 C 1096 805 889.92 234 2 298 Z"
                 />
               </Svg>
             </View>
@@ -325,22 +325,22 @@ const styles = StyleSheet.create({
 
   bar: {
     flexDirection: 'row',
+    height: 60,
     width: '100%',
-    backgroundColor: colors.white,
+    backgroundColor: colors.link,
     justifyContent: 'space-between',
     alignItems: 'center',  
     gap: 10,  
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 12,
-    elevation: 10,
-    shadowColor: 'rgba(0, 0, 0, 0.5)',
+    padding: 10,
+    borderRadius: 20,
+    borderColor: 'rgba(0, 0, 0, 0.08)',
+    borderWidth: 0,
   },
 
   bartext: {
-    fontFamily: 'Montserrat-SemiBold',
-    fontSize: 13,
-    color: 'rgba(0, 0, 0, 0.2)',
+    fontFamily: 'Poppins-Medium',
+    fontSize: 12,
+    color: 'rgba(0, 0, 0, 0.5)',
   },
 
   /* Week */

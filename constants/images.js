@@ -8,6 +8,7 @@ import lines2 from "../assets/images/lines2.jpeg";
 import lines3 from "../assets/images/lines3.jpeg";
 import lines4 from "../assets/images/lines4.jpeg";
 import lines5 from "../assets/images/lines5.jpeg";
+import logo from "../assets/images/logo1.png";
 
 export default { 
     sample1,
@@ -20,4 +21,5 @@ export default {
     lines3,
     lines4,
     lines5,
+    logo,
 };

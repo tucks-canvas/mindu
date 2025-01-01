@@ -19,7 +19,7 @@ import Svg, { Path } from 'react-native-svg';
 import { icons, images } from '../../constants';
 import colors from '../../constants/colors';
 
-const headers = [
+const categories = [
   {
     id: 1,
     title: 'Recent'
@@ -76,10 +76,11 @@ const Community = () => {
 
   const [fname, setFirst] = useState('');
 
+  const [selectedCategory, setSelectedCategory] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   
-  const handleSearch = () => {
-    router.push(`/search?q=${searchQuery}`);
+  const handleSearch = (text) => {
+    setSearchQuery(text);
   };
 
   return (
@@ -102,7 +103,7 @@ const Community = () => {
               >
                 <Path
                   fill={colors.azure}
-                  d="M 0 0 L 148.32 0 C 296.64 0 593.28 0 889.92 0 S 1483.2 0 1631.52 0 L 1925 1 L 1927 313 C 1096 805 889.92 234 1.236 202.8 Z"
+                  d="M 0 0 L 148.32 0 C 296.64 0 593.28 0 889.92 0 S 1483.2 0 1631.52 0 L 1925 1 L 1927 313 C 1096 805 889.92 234 2 298 Z"
                 />
               </Svg>
             </View>
@@ -149,17 +150,21 @@ const Community = () => {
                 </View>
               </View>
 
-              <View style={styles.headers}>
+              <View style={styles.catlisting}>
                 <ScrollView 
                   horizontal
                   showsHorizontalScrollIndicator={false}
                   contentContainerStyle={styles.scrollView3}
                 >
-                  {headers.map((header) => (
+                  {categories.map((category) => (
                     <TouchableOpacity 
-                      style={styles.heading}
+                        style={[styles.category, category.id === selectedCategory && styles.selectedcategory]} 
+                        key={category.id}
+                        onPress={() => setSelectedCategory(category.id)}
                     >
-                      <Text style={styles.headertext}>{header.title}</Text>
+                        <Text style={[styles.catext, category.id === selectedCategory && styles.selectedcatext]}>
+                            {category.title}
+                        </Text>
                     </TouchableOpacity>
                   ))}
                 </ScrollView> 
@@ -355,53 +360,62 @@ const styles = StyleSheet.create({
     width: '87%',
     justifyContent: 'space-between',
     alignItems: 'center',   
-    marginTop: 30, 
+    marginTop: 20, 
   },
 
   bar: {
     flexDirection: 'row',
+    height: 60,
     width: '100%',
-    backgroundColor: colors.white,
+    backgroundColor: colors.link,
     justifyContent: 'space-between',
     alignItems: 'center',  
     gap: 10,  
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 12,
-    elevation: 10,
-    shadowColor: 'rgba(0, 0, 0, 0.5)',
+    padding: 10,
+    borderRadius: 20,
+    borderColor: 'rgba(0, 0, 0, 0.08)',
+    borderWidth: 0,
   },
 
   bartext: {
-    fontFamily: 'Montserrat-SemiBold',
-    fontSize: 13,
-    color: 'rgba(0, 0, 0, 0.2)',
+    fontFamily: 'Poppins-Medium',
+    fontSize: 12,
+    color: 'rgba(0, 0, 0, 0.5)',
   },
 
   /* Headers */
 
-  headers: {
-    width: '100%', 
-    height: 100,
-    paddingTop: 25,
-    left: 20,
+  catlisting: {
+    width: '85%',
+    marginTop: 20,
+    marginBottom: 20,
   },
-
-  heading: {
-    backgroundColor: colors.white,
-    height: 40,
+  
+  category: {
+    backgroundColor: colors.link,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 'auto',
+    height: 37,
     padding: 10,
-    borderRadius: 15,   
-    elevation: 10,
-    shadowColor: 'rgba(0, 0, 0, 0.5)',     
-    shadowRadius: 20,
-    margin: 10,
+    borderRadius: 30,
+    margin: 0,
   },
 
-  headertext: {
+  selectedcategory: {
+    backgroundColor: colors.azure,
+  },
+
+  catext: {
+    color: 'rgba(0, 0, 0, 0.5)',
+    fontSize: 11,
     fontFamily: 'Montserrat-SemiBold',
-    fontSize: 12,
-    color: 'rgba(0, 0, 0, 0.2)',
+  },
+
+  selectedcatext: {
+    color: colors.white,
+    fontSize: 11,
+    fontFamily: 'Montserrat-Medium',
   },
 
   /* Posts */
@@ -533,6 +547,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 30,
     left: 8,
+    marginBottom: 20,
   },
 
   commentimage: {
