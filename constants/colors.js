@@ -35,6 +35,9 @@ const colors = {
     marguerite: '#736dbd',
     chetwood: '#8887d7',
     azure: '#1877f2',
+    royal: '#287fec',
+    cornflower: '#5393f1',
+
 
     // Light, Medium and Soft Colors
     softgreen: '#29AB87',
@@ -44,6 +47,7 @@ const colors = {
     lightBlue: '#ADD8E6',
     lightGrey: '#FBFBFB',
     dullGrey: '#DEDEDE',
+    dullBlue: '#ecf3fd',
     lightGreen: '#90EE90',
     link: '#eef3fb',
 

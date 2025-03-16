@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Tabs from './(tabs)/_layout';
+import Home from './(screens)/home';
 
 const Stack = createStackNavigator();
 
@@ -9,7 +9,7 @@ const Index = () => {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Tabs" component={Tabs} />
+        <Stack.Screen name="Home" component={Home} />
     </Stack.Navigator>
   );
 };

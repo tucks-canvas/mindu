@@ -24,6 +24,17 @@ import rswitch from "../assets/icons/rswitch.png";
 import lswitch from "../assets/icons/lswitch.png";
 import star from "../assets/icons/star.png";
 import starfill from "../assets/icons/starfill.png";
+import message from "../assets/icons/message.png";
+import filter from "../assets/icons/filter.png";
+import heart from "../assets/icons/heart.png";
+import brain from "../assets/icons/brain.png";
+import lung from "../assets/icons/lungs.png";
+import link from "../assets/icons/link.png";
+import info from "../assets/icons/info.png";
+import fast from "../assets/icons/speedometer.png";
+import people from "../assets/icons/users.png";
+import video from "../assets/icons/video.png";
+import left from "../assets/icons/left.png";
 
 export default { 
     home,
@@ -52,4 +63,15 @@ export default {
     lswitch,
     star,
     starfill,
+    message,
+    brain,
+    heart,
+    lung,
+    filter,
+    link,
+    info,
+    fast,
+    people,
+    video,
+    left,
 };
