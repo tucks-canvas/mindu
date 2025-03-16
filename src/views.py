@@ -30,7 +30,7 @@ def create_post():
     if not user:
        return jsonify({"error": "User not found"}), 404
     
-    post = Post(user_id=user.id, content=data['content'])
+    post = Post(user_id=current_user.id, content=data['content'])
     db.session.add(post)
     db.session.commit()
     return jsonify({"message": "Post created", "post_id": post.id}), 201
@@ -44,7 +44,7 @@ def like_post(post_id):
     if not user or not post:
         return jsonify({"error": "User or Post not found"}), 404
     
-    existing_like = Like.query.filter_by(user_id=user.id, post_id=post_id).first()
+    existing_like = Like.query.filter_by(user_id=current_user.id, post_id=post_id).first()
     
     if existing_like:
         return jsonify({"error": "User already liked this post"}), 400
@@ -59,7 +59,7 @@ def like_post(post_id):
 def unlike_post(post_id):
     data = request.get_json()
     user = UserProfile.query.filter_by(username=data['username']).first()
-    like = Like.query.filter_by(user_id=user.id, post_id=post_id).first()
+    like = Like.query.filter_by(user_id=current_user.id, post_id=post_id).first()
 
     if not user or not like:
         return jsonify({"error": "User or Like not found"}), 404
@@ -78,7 +78,7 @@ def comment_on_post(post_id):
     if not user or not post:
         return jsonify({"error": "User or Post not found"}), 404
     
-    comment = Comment(user_id=user.id, post_id=post_id, content=data['content'])
+    comment = Comment(user_id=current_user.id, post_id=post_id, content=data['content'])
     db.session.add(comment)
     db.session.commit()
 
