@@ -35,6 +35,7 @@ import fast from "../assets/icons/speedometer.png";
 import people from "../assets/icons/users.png";
 import video from "../assets/icons/video.png";
 import left from "../assets/icons/left.png";
+import right from "../assets/icons/right.png";
 
 export default { 
     home,
@@ -74,4 +75,5 @@ export default {
     people,
     video,
     left,
+    right,
 };

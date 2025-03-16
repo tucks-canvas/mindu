@@ -32,20 +32,20 @@ const headers = [
 const ratings = [
     {
         id: 1,
-        no: 20, 
-        description: 'Patients',
+        no: '8 Years', 
+        description: 'Experience',
         image: icons.fast,
     },
     {
         id: 2,
         no: 20, 
-        description: 'Patients',
+        description: 'People',
         image: icons.people,
     },
     {
         id: 3,
-        no: 20, 
-        description: 'Patients',
+        no: '2.8K', 
+        description: 'Reviews',
         image: icons.star,
     },
 ];
@@ -124,7 +124,7 @@ const Details = () => {
                         <Image
                             source={icons.info}
                             style={styles.subicon}
-                            tintColor={colors.marguerite}
+                            tintColor={colors.white}
                         />
 
                         <Text style={styles.infotext}>Details</Text>
@@ -168,30 +168,52 @@ const Details = () => {
           <View style={styles.booking}>
 
             <View style={styles.date}>
-                <Text style={styles.datetext}>Select Date</Text>
 
-                <View style={styles.month}>
-                    <Image 
-                        source={icons.left}
-                        tintColor={colors.black}
-                        style={styles.smlicon}
-                    />
+                <View style={styles.dateheader}>
+                    <Text style={styles.datetext}>Select Date</Text>
 
-                    <Text>January</Text>
+                    <View style={styles.month}>
+                        <Image 
+                            source={icons.left}
+                            tintColor={colors.black}
+                            style={styles.subicon}
+                        />
 
-                    <Image 
-                        source={icons.right}
-                        tintColor={colors.black}
-                        style={styles.smlicon}
-                    />
+                        <Text style={styles.datetext}>January</Text>
 
+                        <Image 
+                            source={icons.right}
+                            tintColor={colors.black}
+                            style={styles.subicon}
+                        />
+                    </View>
+                </View>
+
+                <View style={styles.dates}>
+                    {Array.from({ length: 7 }).map((_, index) => {
+                        const date = new Date();
+                        date.setDate(date.getDate() + index);
+                        const day = date.getDate();
+                        const weekday = date.toLocaleDateString('en-US', { weekday: 'long' });
+
+                        return (
+                            <View key={index} style={styles.weekdate}>
+                                <Text style={styles.day}>{day}</Text>
+                                <Text style={styles.weekday}>{weekday}</Text>
+                            </View>
+                        );
+                    })}
                 </View>
             </View>
 
             <View style={styles.time}>
                 <Text style={styles.timetext}>Select Time</Text>
 
-                <View></View>
+                <View style={styles.times}>
+                    {['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'].map((time, index) => (
+                        <Text key={index} style={styles.timesub}>{time}</Text>
+                    ))}
+                </View>
             </View>
 
             <TouchableOpacity style={styles.bookbutton}>
@@ -228,7 +250,7 @@ const Details = () => {
     },
 
     headericon: {
-        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
         padding: 20,
         borderRadius: 50,
     },
@@ -285,7 +307,7 @@ const Details = () => {
 
     rate: {
         flexDirection: 'row',
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
         height: 50,
         width: 80,
         borderRadius: 25,
@@ -305,7 +327,7 @@ const Details = () => {
     /* Information */
 
     details: {
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
+        backgroundColor: 'rgba(255, 255, 255, 0.6)',
         backdropFilter: 'blur(10px)',
         flexDirection: 'column',
         gap: 20,
@@ -314,13 +336,14 @@ const Details = () => {
         borderTopRightRadius: 50,
         bottom: 450,
         width: '100%',
+        height: 230,
     },
 
     info: {
         flexDirection: 'row',
         gap: 5,
         padding: 12,
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        backgroundColor: colors.chetwood,
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
@@ -330,7 +353,7 @@ const Details = () => {
     infotext: {
         fontSize: 15,
         fontFamily: 'Montserrat-Medium',
-        color: colors.chetwood,
+        color: colors.white,
     },   
     
     /* Contacts */
@@ -363,7 +386,7 @@ const Details = () => {
     },
 
     contactbutton: {
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        backgroundColor: 'rgba(255, 255, 255, 1)',
         padding: 20,
         borderRadius: 50,
         justifyContent: 'center',
@@ -388,14 +411,78 @@ const Details = () => {
     ratingsub: {
         fontSize: 12,
         fontFamily: 'Montserrat-Medium',
-        color: 'rgba(0, 0, 0, 0.5)',
+        color: 'rgba(0, 0, 0, 0.7)',
     },
 
     /* Date */
 
+    dates: {
+        flexDirection: 'row',
+        paddingVertical: 25,
+    },
+
+    date: {
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+    },
+
+    dateheader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+
+    weekdate: {
+        textAlign: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        padding: 10,
+        borderRadius: 30,
+        width: 90,
+        height: 50,
+    },
+
+    day: {
+        fontSize: 20,
+        fontFamily: 'Montserrat-Bold',
+        color: colors.chetwood,
+    },
+
+    weekday: {
+        fontSize: 10,
+        fontFamily: 'Montserrat-Medium',
+        color: colors.chetwood,
+    },
+
     month: {
         flexDirection: 'row',
-        justifyContent: 'center',        
+        alignItems: 'center',
+        gap: 5,
+    },
+
+    datetext: {
+        fontSize: 15,
+        fontFamily: 'Montserrat-Medium',
+        color: colors.chetwood,   
+    },
+
+    /* Time */
+
+    times: {
+        flexDirection: 'row',
+        gap: 10,
+        paddingVertical: 20,
+    },
+
+    timetext: {
+        fontSize: 15,
+        fontFamily: 'Montserrat-Medium',
+        color: colors.chetwood,
+    },
+
+    timesub: {
+        fontSize: 15,
+        fontFamily: 'Montserrat-Bold',
+        color: colors.chetwood,
     },
 
     /* Booking */
@@ -408,7 +495,7 @@ const Details = () => {
         padding: 20,
         borderTopLeftRadius: 50,
         borderTopRightRadius: 50,
-        bottom: 450,
+        bottom: 460,
         width: '100%',
         height: '100%',
     },
@@ -426,7 +513,6 @@ const Details = () => {
         alignItems: 'center',
         backgroundColor: colors.chetwood,
     },
-
 
     /* Add-Ons */
 
