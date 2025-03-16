@@ -1,5 +1,14 @@
 from . import db
 from werkzeug.security import generate_password_hash
+from enum import Enum
+
+class UserRole(Enum):
+    PSYCHIATRIST = "Psychiatrist"
+    PSYCHOLOGIST = "Psychologist"
+    THERAPIST = "Therapist"
+    COUNSELLOR = "Counsellor"
+    PATIENT = "Patient"
+    
 
 class UserProfile(db.Model):
     __tablename__ = 'user_profiles'
@@ -9,12 +18,14 @@ class UserProfile(db.Model):
     last_name = db.Column(db.String(100), nullable = False)
     email = db.Column(db.String(120), unique = True, nullable = False)
     password = db.Column(db.String(256), nullable = False)
+    role = db.Column(db.Enum(UserRole), nullable=False)
 
-    def __init__(self, first_name, last_name, email, password):
+    def __init__(self, first_name, last_name, email, password, role):
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
         self.password = generate_password_hash(password, method = 'pbkdf2:sha256:600000')
+        self.role = role
     
     def is_authenticated(self):
         return True
