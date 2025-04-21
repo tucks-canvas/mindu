@@ -2,7 +2,6 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 app = Flask(__name__)
-app.secret_key = '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'
 CORS(app, resources={r"/*": {"origins": "*"}})  # Allows all origins
 
 # Initialize chat history
