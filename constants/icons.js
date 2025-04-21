@@ -36,6 +36,8 @@ import people from "../assets/icons/users.png";
 import video from "../assets/icons/video.png";
 import left from "../assets/icons/left.png";
 import right from "../assets/icons/right.png";
+import reset from "../assets/icons/refresh.png";
+import send from "../assets/icons/send.png";
 
 export default { 
     home,
@@ -76,4 +78,6 @@ export default {
     video,
     left,
     right,
+    send,
+    reset,
 };

@@ -152,7 +152,7 @@ const Details = () => {
                             <Image 
                                 source={rating.image}
                                 style={styles.smlicon}
-                                tintColor={colors.black}
+                                tintColor={colors.chetwood}
                             />
 
                             <View style={styles.ratingfooter}>
@@ -166,59 +166,71 @@ const Details = () => {
           </View> 
 
           <View style={styles.booking}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={styles.scrollViewContent}
+            >
+                <View style={styles.date}>
+                    <View style={styles.dateheader}>
+                        <Text style={styles.datetext}>Select Date</Text>
 
-            <View style={styles.date}>
+                        <View style={styles.month}>
+                            <Image 
+                                source={icons.left}
+                                tintColor={colors.chetwood}
+                                style={styles.subicon}
+                            />
 
-                <View style={styles.dateheader}>
-                    <Text style={styles.datetext}>Select Date</Text>
+                            <Text style={styles.datetext}>January</Text>
 
-                    <View style={styles.month}>
-                        <Image 
-                            source={icons.left}
-                            tintColor={colors.black}
-                            style={styles.subicon}
-                        />
+                            <Image 
+                                source={icons.right}
+                                tintColor={colors.chetwood}
+                                style={styles.subicon}
+                            />
+                        </View>
+                    </View>
 
-                        <Text style={styles.datetext}>January</Text>
+                    <View style={styles.dates}>
+                        {Array.from({ length: 7 }).map((_, index) => {
+                            const date = new Date();
+                            date.setDate(date.getDate() + index);
+                            const day = date.getDate();
+                            const weekday = date.toLocaleDateString('en-US', { weekday: 'long' });
 
-                        <Image 
-                            source={icons.right}
-                            tintColor={colors.black}
-                            style={styles.subicon}
-                        />
+                            return (
+                                <View key={index} style={styles.weekdate}>
+                                    <Text style={styles.day}>{day}</Text>
+                                    <Text style={styles.weekday}>{weekday}</Text>
+                                </View>
+                            );
+                        })}
                     </View>
                 </View>
 
-                <View style={styles.dates}>
-                    {Array.from({ length: 7 }).map((_, index) => {
-                        const date = new Date();
-                        date.setDate(date.getDate() + index);
-                        const day = date.getDate();
-                        const weekday = date.toLocaleDateString('en-US', { weekday: 'long' });
+                <View style={styles.time}>
+                    <Text style={styles.timetext}>Select Time</Text>
 
-                        return (
-                            <View key={index} style={styles.weekdate}>
-                                <Text style={styles.day}>{day}</Text>
-                                <Text style={styles.weekday}>{weekday}</Text>
-                            </View>
-                        );
-                    })}
+                    <View style={styles.times}>
+                        {Array.from({ length: 12 }).map((_, index) => {
+                            const hour = 8 + index;
+                            const period = hour < 12 ? 'AM' : 'PM';
+                            const displayHour = hour <= 12 ? hour : hour - 12;
+
+                            return (
+                                <View key={index} style={styles.timestamp}>
+                                    <Text style={styles.timesub}>{displayHour}</Text>
+                                    <Text style={styles.timesml}>{period}</Text>
+                                </View>
+                            );
+                        })}
+                    </View>
                 </View>
-            </View>
 
-            <View style={styles.time}>
-                <Text style={styles.timetext}>Select Time</Text>
-
-                <View style={styles.times}>
-                    {['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'].map((time, index) => (
-                        <Text key={index} style={styles.timesub}>{time}</Text>
-                    ))}
-                </View>
-            </View>
-
-            <TouchableOpacity style={styles.bookbutton}>
-                <Text style={styles.booktext}>Booking</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.bookbutton}>
+                    <Text style={styles.booktext}>Booking</Text>
+                </TouchableOpacity>
+            </ScrollView>
           </View> 
       </>
     );
@@ -238,6 +250,11 @@ const Details = () => {
 
     container: {
         width: '100%',
+        height: '100%',
+    },
+
+    scrollViewContent: {
+        paddingBottom: 100,
         height: '100%',
     },
 
@@ -391,7 +408,7 @@ const Details = () => {
         borderRadius: 50,
         justifyContent: 'center',
         alignItems: 'center',
-
+        elevation: 10,
     },
 
     /* Rating */
@@ -411,7 +428,7 @@ const Details = () => {
     ratingsub: {
         fontSize: 12,
         fontFamily: 'Montserrat-Medium',
-        color: 'rgba(0, 0, 0, 0.7)',
+        color: 'rgba(0, 0, 0, 0.4)',
     },
 
     /* Date */
@@ -424,6 +441,7 @@ const Details = () => {
     date: {
         flexDirection: 'column',
         justifyContent: 'space-between',
+        paddingBottom: 10,
     },
 
     dateheader: {
@@ -470,7 +488,17 @@ const Details = () => {
     times: {
         flexDirection: 'row',
         gap: 10,
-        paddingVertical: 20,
+        paddingVertical: 50,
+    },
+
+    timestamp: {
+        textAlign: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(255, 255, 255, 0.7)',
+        padding: 10,
+        borderRadius: 30,
+        width: 90,
+        height: 50,
     },
 
     timetext: {
@@ -492,7 +520,7 @@ const Details = () => {
         backdropFilter: 'blur(10px)',
         flexDirection: 'column',
         gap: 20,
-        padding: 20,
+        padding: 30,
         borderTopLeftRadius: 50,
         borderTopRightRadius: 50,
         bottom: 460,

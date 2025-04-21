@@ -212,6 +212,7 @@ const Home = () => {
         <View style={styles.professionalsearch}>    
             <ScrollView
                 showsVerticalScrollIndicator={true}
+                contentContainerStyle={styles.scrollViewContent2}
             >
                 <View style={styles.searcheader}>
                     <View style={styles.searchtexts}>
@@ -263,7 +264,10 @@ const Home = () => {
             </ScrollView>
         </View>
 
-        <TouchableOpacity style={styles.chatbutton}>
+        <TouchableOpacity 
+            onPress={() => router.push('/(screens)/chat')}
+            style={styles.chatbutton}
+        >
             <Image
                 source={icons.chat}
                 style={styles.icon}
@@ -291,6 +295,11 @@ const styles = StyleSheet.create({
         height: '100%',
     },
 
+    scrollViewContent2: {
+        paddingBottom: 200,
+        gap: 5,
+    },
+
     /* Header */
 
     header: {
@@ -306,7 +315,7 @@ const styles = StyleSheet.create({
 
     headericon: {
         borderRadius: 30,
-        padding: 13,
+        padding: 15,
         backgroundColor: colors.white,
     },
 
@@ -362,7 +371,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         elevation: 1,
-        
     },
 
     professionalinfo: {
@@ -446,13 +454,15 @@ const styles = StyleSheet.create({
     },
 
     searchicon: {
-        backgroundColor: 'rgba(215, 215, 215, 0.17)',
+        backgroundColor: 'rgba(255, 255, 255, 1)',
         padding: 20,
         borderRadius: 30,
-        height: 60,
-        width: 60,
+        height: 50,
+        width: 50,
         justifyContent: 'center',
         alignItems: 'center', 
+        elevation: 10,
+        margin: 5,
     },
 
     /* Visits */
@@ -467,15 +477,17 @@ const styles = StyleSheet.create({
 
     visit: {
         flexDirection: 'column',
-        backgroundColor: 'rgba(255, 255, 255, 0.6)',
+        backgroundColor: 'rgba(255, 255, 255, 1)',
         height: 165,
-        width: 170,
+        width: 158,
         gap: 10,
-        padding: 22,
+        padding: 17,
         justifyContent: 'space-between',
         borderColor: 'rgba(193, 193, 193, 0.30)',
         borderRadius: 30,
         borderWidth: 1,
+        elevation: 10,
+        margin: 6,
     },
 
     visitinfo: {
@@ -526,6 +538,7 @@ const styles = StyleSheet.create({
         width: 60,  
         justifyContent: 'center',
         alignItems: 'center',  
+        elevation: 10,
     },
 
     /* Add-Ons */
